@@ -5,17 +5,13 @@ use bindings::Windows::Win32::System::SystemServices::DLL_PROCESS_ATTACH;
 use std::ffi::c_void;
 use std::thread;
 
-macro_rules! create_entry_point {
-    () => {};
-}
-
 fn hack_main_thread() {
     unsafe {
         AllocConsole();
     }
-    for i in 0..5000 {
-        println!("{}", i);
-    }
+
+    // YOUR STUNNING CODE'S SUPPOSED TO BE HERE;
+
     unsafe {
         FreeConsole();
     }
@@ -23,7 +19,7 @@ fn hack_main_thread() {
 
 #[no_mangle]
 #[allow(non_snake_case)]
-fn DllMain(h_module: HINSTANCE, dw_reason: u32, _: *const c_void) -> BOOL {
+extern "system" fn DllMain(h_module: HINSTANCE, dw_reason: u32, _: *const c_void) -> BOOL {
     if dw_reason == DLL_PROCESS_ATTACH {
         unsafe {
             DisableThreadLibraryCalls(h_module);
