@@ -23,7 +23,8 @@ Make sure to change target value as which architecture you're targetting to.
 
 | target                 | remarkable                |     |
 | ---------------------- | ------------------------- | --- |
-| i686-pc-windows-gnu    | 32-bit MinGW (Windows 7+) |     |
 | i686-pc-windows-msvc   | 32-bit MSVC (Windows 7+)  |     |
-| x86_64-pc-windows-gnu  | 64-bit MinGW (Windows 7+) |     |
 | x86_64-pc-windows-msvc | 64-bit MSVC (Windows 7+)  |     |
+| i686-pc-windows-gnu    | 32-bit MinGW (Windows 7+) |     |
+| x86_64-pc-windows-gnu  | 64-bit MinGW (Windows 7+) |     |
+
