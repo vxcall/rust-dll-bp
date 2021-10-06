@@ -1,9 +1,3 @@
-use winapi::um::{
-    consoleapi::AllocConsole,
-    wincon::FreeConsole,
-};
-
-
 // A neat macro from toy-arms crate which eases defining entry point.
 toy_arms::create_entrypoint!(hack_main_thread);
 
