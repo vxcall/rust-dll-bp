@@ -1,9 +1,13 @@
-use bindings::Windows::Win32::System::Console::{AllocConsole, FreeConsole};
+use winapi::um::{
+        consoleapi::AllocConsole,
+        wincon::FreeConsole,
+};
+use winapi::shared::minwindef::{BOOL, HINSTANCE, LPVOID, TRUE};
+use winapi::um::libloaderapi::DisableThreadLibraryCalls;
+use winapi::um::winnt::DLL_PROCESS_ATTACH;
 
-// A neat macro from toy-arms crate which eases defining entry point.
-toy_arms::create_entrypoint!(hack_main_thread);
+use std::thread;
 
-// A main function you want to run in the game.
 fn hack_main_thread() {
     unsafe {
         AllocConsole();
@@ -17,4 +21,18 @@ fn hack_main_thread() {
     unsafe {
         FreeConsole();
     }
+}
+
+#[no_mangle]
+#[allow(non_snake_case)]
+extern "system" fn DllMain(h_module: HINSTANCE, dw_reason: u32, _: LPVOID) -> BOOL {
+    if dw_reason == DLL_PROCESS_ATTACH {
+        unsafe {
+            DisableThreadLibraryCalls(h_module);
+        }
+        thread::spawn(|| {
+            hack_main_thread();
+        });
+    }
+    TRUE
 }
