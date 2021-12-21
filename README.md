@@ -8,9 +8,7 @@ You can inject this to running process without any issues.
 # toy-arms crate
 
 This crate consists of winapi crate only.
-However, there is an example which uses [toy-arms crate](https://github.com/s3pt3mb3r/toy-arms) that eases developing dll in `examples` directory.
-
-The variant without toy-arms is on [gist](https://gist.github.com/s3pt3mb3r/c86f87fd0259d175bf6cbdc5b8f49f56).
+However, there is an [example](https://github.com/s3pt3mb3r/rust-dll-bp/blob/master/examples/use_toy_arms.rs) which uses [toy-arms crate](https://github.com/s3pt3mb3r/toy-arms) that eases developing dll in `examples` directory.
 
 # :warning: important
 
